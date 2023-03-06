@@ -107,7 +107,7 @@ async def get_groups(_, message: Message):
     all_dialog = bot.get_dialogs()
     async for dialog in all_dialog:
         if dialog:
-            if dialog.chat.type == ChatType.GROUP:
+            if dialog.chat.type == ChatType.GROUP or ChatType.SUPERGROUP:
                 message_text += f"\nname: {dialog.chat.title}\n"
                 message_text += f"group id: {dialog.chat.id}\n"
     await bot.send_message(message.from_user.id, message_text)
